@@ -5,9 +5,9 @@
     --font-Inter: 'Inter';
     --font-Raleway: 'Raleway';
     --color-background: #F8F9FA;
-    --color-navbar: #B7BDC6 ;
+    --color-navbar: #ced5de ;
     --color-cards: #FFFFFF;
-    --color-buttons: #BCC3CC  ;
+    --color-buttons: #dde4ed  ;
     --shadow-shadow:  0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -30,7 +30,7 @@
         @apply bg-background text-gray-900 font-Inter flex flex-col items-center;
     }
     nav {
-        @apply bg-navbar text-gray-900 border-b-1 border-gray-500 w-screen flex items-center z-5 h-14 top-0 justify-around gap-3 px-7 md:px-15;
+        @apply bg-navbar text-gray-900 w-screen flex items-center z-5 h-14 top-0 justify-around gap-3 px-7 md:px-15;
     }
 }
 
@@ -51,13 +51,13 @@
         transform: translateX(100%);
     }
     #home-button {
-        @apply text-xl font-Raleway font-light flex-1/3 hover:cursor-pointer hover:text-gray-600;
+        @apply text-xl font-Raleway font-normal flex-1/3 hover:cursor-pointer hover:text-gray-600;
     }
     .nav-link {
         @apply text-xs md:text-sm hover:cursor-pointer hover:text-gray-600;
     }
     .skills-projects {
-        @apply bg-buttons text-gray-800 border-1 border-gray-500 font-normal text-2xl w-42 h-12 rounded-3xl transition-transform duration-200 hover:scale-120 hover:cursor-pointer;
+        @apply bg-buttons text-gray-800 border-1 border-gray-400 shadow-sm font-normal text-2xl w-42 h-12 rounded-3xl transition-transform duration-200 hover:scale-120 hover:cursor-pointer;
     }
     .logo {
         @apply transition-transform duration-200 hover:cursor-pointer hover:scale-110;
