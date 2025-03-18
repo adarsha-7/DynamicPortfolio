@@ -1,0 +1,87 @@
+@import "tailwindcss";
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+
+@theme {
+    --font-Inter: 'Inter';
+    --font-Raleway: 'Raleway';
+    --color-background: #F4F7FB ;
+    --color-primary: #2C3E50  ;
+    --color-secondary: #FFFFFF;
+    --shadow-shadow:  0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('/fonts/Inter/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: url('/fonts/Raleway/Raleway-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+}
+
+@layer base {
+    body {
+        @apply h-screen bg-background text-gray-900 font-Inter flex flex-col items-center;
+    }
+    nav {
+        @apply bg-primary text-neutral-200 w-screen flex items-center z-5 h-15 top-0 justify-around gap-3 px-7 md:px-15;
+    }
+}
+
+@layer components {
+    #home-page, #skills-page, #projects-page {
+        @apply font-Raleway flex flex-col justify-start absolute w-full transition-transform duration-1000 ease-in-out pb-10;
+    }
+    #home-page {
+        @apply flex items-center pt-75 gap-25; 
+    }
+    #skills-page, #projects-page {
+       @apply  hidden items-start pt-30 gap-10 pl-10 md:pl-20 pr-5 md:pr-10;
+    }
+    #skills-page {
+        transform: translateX(-100%);
+    }
+    #projects-page {
+        transform: translateX(100%);
+    }
+    #home-button {
+        @apply text-xl font-Raleway font-light flex-1/3 hover:cursor-pointer hover:text-gray-400;
+    }
+    .nav-link {
+        @apply text-xs md:text-sm hover:cursor-pointer hover:text-gray-400;
+    }
+    .skills-projects {
+        @apply bg-primary text-gray-300 font-normal text-2xl w-42 h-12 rounded-3xl transition-transform duration-200 hover:scale-120 hover:cursor-pointer;
+    }
+    .logo {
+        @apply transition-transform duration-200 hover:cursor-pointer hover:scale-110;
+    }
+    .project-card {
+        @apply bg-secondary rounded-lg shadow-shadow p-4 w-70 h-42 flex flex-col items-center gap-3 transition-transform duration-500 hover:scale-120 hover:cursor-pointer;
+      }
+    .project-title {
+        @apply text-xl font-semibold text-gray-800;
+    }
+    .tech-icons {
+        @apply flex gap-4 justify-center transition-opacity duration-500 ease-in-out;
+    }
+    .tech-icons img {
+        @apply w-10 h-10 object-contain;
+    }
+    .project-info {
+        @apply absolute inset-0 px-3 pt-10 pb-1 flex items-center justify-center text-gray-800 text-xs font-medium opacity-0 transition-opacity duration-500 ease-in-out;
+        pointer-events: none;
+    }    
+    .project-card:hover .tech-icons {
+        @apply opacity-0;
+    }
+    .project-card:hover .project-info {
+        @apply opacity-100;
+    }
+}
+

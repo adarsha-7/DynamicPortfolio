@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="src/index.css">
+</head>
+
+<body>
+  <nav>
+    <h1 id="home-button">PORTFOLIO</h1>
+    <div class="flex gap-5 font-light flex-1/3 justify-center">
+      <a class="nav-link" href="#">CONTACT</a>
+      <a class="nav-link" href="https://drive.google.com/file/d/1e8M2LZ-0LzeihM5MG6YpKC1rO_VF1YSI/view?usp=drive_link" target="_blank">RESUME</a>
+    </div>
+    <div class="flex gap-5 md:gap-8 flex-1/3 justify-end">
+      <i class="fas fa-moon pt-2.5 text-md pr-1 md:pr-5 hover:cursor-pointer hover:text-gray-400"></i>
+      <a href="https://www.instagram.com/___adarsha_/"                 
+      target="_blank"><i class="nav-link py-3 fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/in/adarsha-ghimire-053a20356/" 
+      target="_blank"><i class="nav-link py-3 fab fa-linkedin"></i></a>
+      <a href="https://github.com/adarsha-7"                           
+      target="_blank"><i class="nav-link py-3 fab fa-github"></i></a>
+    </div>
+  </nav>
+
+  <div id="home-page">
+    <div class="text-gray-900 flex flex-col items-center gap-3">
+      <p class="font-normal text-3xl">ADARSHA GHIMIRE</p>
+      <p class="font-light text-2xl">Full-Stack Web Developer</p>
+    </div>
+    <div class="flex items-center gap-15">
+      <button class="skills-projects" id="skills-btn">Skills</button>
+      <button class="skills-projects" id="projects-btn">Projects</button>
+    </div>
+  </div>
+
+  <div id="skills-page">
+    <p class="font-normal text-3xl">SKILLS</p>
+      <div class="flex flex-col gap-12">
+        <div class="flex flex-col gap-5">
+          <p class="font-normal text-xl items-center">Front-end</p>
+          <div class="flex gap-5 md:gap-10 items-center">
+            <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">
+              <img class="logo w-16 h-20" src="/icons/html.png" alt="HTML logo">
+            </a>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank">
+              <img class="logo w-16 h-20" src="/icons/css.png" alt="CSS logo">
+            </a>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
+              <img class="logo w-20 h-20" src="/icons/JavaScript.png" alt="JavaScript logo">
+            </a>
+            <a href="https://tailwindcss.com" target="_blank">
+              <img class="logo w-20 h-12" src="/icons/TailwindCSS.png" alt="Tailwind CSS logo">
+            </a>
+          </div>
+        </div>
+        
+        <div class="flex flex-col gap-5">
+          <p class="font-normal text-xl items-center">Back-end</p>
+          <div class="flex gap-3 md:gap-10 items-center">
+            <a href="https://nodejs.org/en/about" target="_blank">
+              <img class="logo w-28 h-16" src="/icons/Nodejs.png" alt="Node.js logo">
+            </a>
+            <a href="https://expressjs.com" target="_blank">
+              <img class="logo w-28 h-6" src="/icons/expressjs.png" alt="Express.js logo">
+            </a>
+            <a href="https://jwt.io/introduction" target="_blank">
+              <img class="logo w-28 h-10" src="/icons/jwt.png" alt="JWT logo">
+            </a>
+            <a href="https://www.mongodb.com/resources/products/fundamentals/basics" target="_blank">
+              <img class="logo w-42 h-10 mb-3" src="/icons/mongoDB.png" alt="MongoDB logo">
+            </a>
+          </div>
+        </div>
+        
+        <div class="flex flex-col gap-5">
+          <p class="font-normal text-xl items-center">Tools & Workflow</p>
+          <div class="flex gap-5 md:gap-10 items-center">
+            <a href="https://docs.npmjs.com/about-npm" target="_blank">
+              <img class="logo w-24 h-8" src="/icons/npm.png" alt="NPM logo">
+            </a>
+            <a href="https://git-scm.com" target="_blank">
+              <img class="logo w-16 h-16" src="/icons/git.png" alt="Git logo">
+            </a>
+            <a href="https://github.com/adarsha-7" target="_blank">
+              <img class="logo w-16 h-16" src="/icons/github.png" alt="GitHub logo">
+            </a>
+          </div>
+        </div>        
+      </div>
+  </div>
+
+  <div id="projects-page">
+    <div>
+      <p class="font-normal text-3xl">PROJECTS</p>
+    </div>
+
+    <div class="flex gap-10 lg:gap-15 flex-wrap">
+      <a class="project-card" href="https://github.com/adarsha-7/StudyHub" target="_blank">
+        <h3 class="project-title">StudyHub</h3>
+        <div class="tech-icons">
+          <img src="/icons/html.png" alt="HTML logo">
+          <img src="/icons/css.png" alt="CSS logo">
+          <img src="/icons/JavaScript.png" alt="JavaScript logo">
+        </div>
+        <div class="tech-icons">
+          <img src="/icons/nodejs-sm.png" alt="Node.js logo">
+          <img src="/icons/expressjs-sm.png" alt="Express.js logo">
+          <img src="/icons/jwt-sm.png" alt="JWT logo">
+          <img src="/icons/mongodb-sm.png" alt="MongoDB logo">
+        </div>
+        <div class="project-info">
+          <p>
+            StudyHub is a platform designed for students of Computer department of KU to engage in discussions
+            with peers and seniors through a forum-like discussions page. <br>
+            The website also incorporates robust JWT-based authentication
+            for secure user access.
+          </p>
+        </div>
+      </a>
+
+      <a class="project-card" href="#" target="_blank">
+        <h3 class="project-title">Portfolio</h3>
+        <div class="tech-icons">
+          <img src="/icons/html.png" alt="HTML logo">
+          <img src="/icons/TailwindCSS.png" alt="TailwindCSS logo">
+          <img src="/icons/JavaScript.png" alt="JavaScript logo">
+        </div>
+        <div class="tech-icons">
+          <img src="/icons/nodejs-sm.png" alt="Node.js logo">
+          <img src="/icons/expressjs-sm.png" alt="Express.js logo">
+          <img src="/icons/jwt-sm.png" alt="JWT logo">
+          <img src="/icons/mongodb-sm.png" alt="MongoDB logo">
+        </div>
+        <div class="project-info">
+          <p>
+            This personal portfolio features a clean, minimalistic design built with TailwindCSS.<br>
+            It showcases my skills and projects, with an admin panel that lets me update content 
+            directly from the website, without having to ever modify the code.
+          </p>
+        </div>
+      </a>
+
+      <a class="project-card" href="https://github.com/adarsha-7/LeagueManager" target="_blank">
+        <h3 class="project-title">League Manager</h3>
+        <div class="tech-icons">
+          <img src="/icons/c++.png" alt="C++ logo">
+        </div>
+        <div class="project-info">
+          <p>
+            League Manager is a software designed for organizing and managing football leagues efficiently.
+            It allows users to determine matches, auto-schedule games, and maintain up-to-date league data.
+            The system presents information in a simple, readable format, based on input league-related data.
+          </p>
+        </div>
+      </a>
+
+      <a class="project-card" href="https://github.com/adarsha-7/calculator" target="_blank">
+        <h3 class="project-title">Calculator</h3>
+        <div class="tech-icons">
+          <img src="/icons/html.png" alt="HTML logo">
+          <img src="/icons/css.png" alt="CSS logo">
+          <img src="/icons/JavaScript.png" alt="JavaScript logo">
+        </div>
+        <div class="project-info">
+          <p>
+            This is a simple calculator which can process basic mathematical expressions and also has features 
+            like power of 10, power, square and square root.<br>
+            This was my first web-based project which I created to practice after learning the fundamentals of
+            web-development.
+          </p>
+        </div>
+      </a>
+    </div>
+  </div>
+  
+  <script type="module" src="src/index.js"></script>
+</body>
+
+</html>
