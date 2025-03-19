@@ -51,10 +51,10 @@
         transform: translateX(100%);
     }
     #home-button {
-        @apply text-xl font-Raleway font-normal flex-1/3 hover:cursor-pointer hover:text-gray-600;
+        @apply text-sm md:text-lg font-Raleway font-normal flex-1/3 hover:cursor-pointer hover:text-gray-600;
     }
     .nav-link {
-        @apply text-xs md:text-sm hover:cursor-pointer hover:text-gray-600;
+        @apply text-[10px] md:text-xs hover:cursor-pointer hover:text-gray-600;
     }
     .skills-projects {
         @apply bg-buttons text-gray-800 border-1 border-gray-400 shadow-sm font-normal text-2xl w-42 h-12 rounded-3xl transition-transform duration-200 hover:scale-120 hover:cursor-pointer;
