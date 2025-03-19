@@ -30,7 +30,7 @@
         @apply bg-background text-gray-900 font-Inter flex flex-col items-center;
     }
     nav {
-        @apply bg-navbar text-gray-900 w-screen flex items-center z-5 h-14 top-0 justify-around gap-3 px-7 md:px-15;
+        @apply bg-navbar border-1 border-gray-200 text-gray-900 w-screen flex items-center z-5 h-14 top-0 justify-around gap-3 px-7 md:px-15;
     }
 }
 
@@ -57,7 +57,7 @@
         @apply text-[10px] md:text-xs hover:cursor-pointer hover:text-gray-600;
     }
     .skills-projects {
-        @apply bg-buttons text-gray-800 border-1 border-gray-300 shadow-sm font-normal text-2xl w-42 h-12 rounded-3xl transition-transform duration-200 hover:scale-120 hover:cursor-pointer;
+        @apply bg-buttons text-gray-800 border-1 border-gray-200 shadow-sm font-normal text-2xl w-42 h-12 rounded-3xl transition-transform duration-200 hover:scale-120 hover:cursor-pointer;
     }
     .logo {
         @apply transition-transform duration-200 hover:cursor-pointer hover:scale-110;
