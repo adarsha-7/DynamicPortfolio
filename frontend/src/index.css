@@ -5,9 +5,9 @@
     --font-Inter: 'Inter';
     --font-Raleway: 'Raleway';
     --color-background: #F8F9FA;
-    --color-navbar: #DEE2E8 ;
+    --color-navbar: #F8F9FA;
     --color-cards: #FFFFFF;
-    --color-buttons: #E4E7EC  ;
+    --color-buttons: #F8F9FA;
     --shadow-shadow:  0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -57,7 +57,7 @@
         @apply text-[10px] md:text-xs hover:cursor-pointer hover:text-gray-600;
     }
     .skills-projects {
-        @apply bg-buttons text-gray-800 border-1 border-gray-200 shadow-sm font-normal text-2xl w-42 h-12 rounded-3xl transition-transform duration-200 hover:scale-120 hover:cursor-pointer;
+        @apply bg-buttons text-gray-800 border-1 border-gray-300 shadow-md font-normal text-2xl w-42 h-12 rounded-3xl transition-transform duration-200 hover:scale-120 hover:cursor-pointer;
     }
     .logo {
         @apply transition-transform duration-200 hover:cursor-pointer hover:scale-110;
