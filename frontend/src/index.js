@@ -27,7 +27,7 @@ document.querySelector("#skills-btn").addEventListener("click", function () {
     }, 1100); 
 });
 
-document.querySelector("#projects-btn").addEventListener("click", function () {
+document.querySelector("#works-btn").addEventListener("click", function () {
     document.body.style.overflow = "hidden";
     projectsPage.style.display = "flex"; 
     document.querySelector("#home-button").style.pointerEvents = "none";
