@@ -41,3 +41,87 @@ document.querySelector("#works-btn").addEventListener("click", function () {
         document.querySelector("#home-button").style.pointerEvents = "auto";
     }, 1100); 
 });
+
+//dark mode
+if (!localStorage.getItem("theme")) localStorage.setItem("theme", "light");
+
+const themeBtn = document.querySelector(".theme-button");
+
+themeBtn.addEventListener("click", () => {
+    let theme = localStorage.getItem("theme");
+
+    if (theme === "light") {
+        localStorage.setItem("theme", "dark");
+        document.documentElement.classList.add("dark");
+        const iconElement = document.querySelector('.theme-button i');
+        iconElement.classList.remove("fas", "fa-moon");
+        iconElement.classList.add("fas", "fa-circle");
+    } else {
+        localStorage.setItem("theme", "light");
+        document.documentElement.classList.remove("dark");
+        const iconElement = document.querySelector('.theme-button i');
+        iconElement.classList.remove("fas", "fa-circle");
+        iconElement.classList.add("fas", "fa-moon");
+    }
+});
+
+// Apply theme on page load
+document.addEventListener("DOMContentLoaded", () => {
+    if (localStorage.getItem("theme") === "dark") {
+        document.documentElement.classList.add("dark");
+        const iconElement = document.querySelector('.theme-button i');
+        iconElement.classList.add("fas", "fa-circle");
+    }
+    else {
+        document.documentElement.classList.remove("dark");
+        const iconElement = document.querySelector('.theme-button i');
+        iconElement.classList.add("fas", "fa-moon");
+    }
+});
+
+
+
+//typing effect
+const l1 = "I design and develop";
+const l2 = "front-end and back-end";
+const l3 = "for websites.";
+
+function typewriter1() {
+    let index = 0;
+    let interval = setInterval(() => {
+        if (index < l1.length) {
+            document.querySelector("#l1").innerHTML += l1[index];
+            index++;
+        } else {
+            clearInterval(interval);
+            typewriter2();
+        }
+    }, 50);
+}
+
+function typewriter2() {
+    let index = 0;
+    let interval = setInterval(() => {
+        if (index < l2.length) {
+            document.querySelector("#l2").innerHTML += l2[index];
+            index++;
+        } else {
+            clearInterval(interval);
+            typewriter3();
+        }
+    }, 50);
+}
+
+function typewriter3() {
+    let index = 0;
+    let interval = setInterval(() => {
+        if (index < l3.length) {
+            document.querySelector("#l3").innerHTML += l3[index];
+            index++;
+        } else {
+            clearInterval(interval);
+        }
+    }, 50);
+}
+
+window.onload = typewriter1();

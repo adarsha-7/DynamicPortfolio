@@ -3,14 +3,17 @@
 
 @theme {
     --font-Inter: 'Inter';
-    --font-Raleway: 'Raleway';
     --color-background: #F8F9FA;
-    --color-navbar: #F8F9FA;
+    --color-background-dark: #111827;
     --color-primary: #f78537;
     --color-cards: #FFFFFF;
+    --color-cards-dark: #1f2937;
     --color-buttons: #F8F9FA;
+    --color-buttons-dark: #1f2937; 
     --shadow-shadow:  0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 @font-face {
     font-family: 'Inter';
@@ -21,14 +24,19 @@
 
 @layer base {
     body {
-        @apply bg-background text-gray-900 font-Inter flex flex-col items-center;
+        @apply bg-background dark:bg-background-dark text-gray-900 dark:text-gray-300 font-Inter flex flex-col items-center;
     }
     nav {
-        @apply bg-navbar border-1 border-gray-200 text-gray-900 w-screen flex items-center z-5 h-14 top-0 
+        @apply border-b-1 border-gray-300 dark:border-gray-700 w-screen flex items-center z-5 h-14 top-0 
         justify-around gap-3 px-7 md:px-15;
     }
     .font-outline-1 {
         -webkit-text-stroke: 1px #f78537;
+        -webkit-text-fill-color: #F8F9FA;
+    }
+    .font-outline-1-dark {
+        -webkit-text-stroke: 1px #f78537;
+        -webkit-text-fill-color: #111827;
     }
 }
 
@@ -52,26 +60,32 @@
         @apply text-sm md:text-lg font-light flex-1/3 hover:cursor-pointer hover:text-primary;
     }
     .home-info{
-        @apply flex flex-col justify-center gap-10 h-80 w-80 md:h-120;
+        @apply flex flex-col justify-start gap-10 h-80 w-80 md:h-120 md:pt-30;
     }
     .info-name{
-        @apply flex flex-col text-5xl font-medium;
+        @apply flex flex-col text-5xl font-medium h-36 ;
     }
     .info-info{
-        @apply flex flex-col text-xl font-light;   
+        @apply flex flex-col text-xl font-light h-24 ;   
+    }
+    #im, #fn, #ln {
+        @apply h-12 ;
+    }
+    #l1, #l2, #l3 {
+        @apply h-8 ;
     }
     .skills-works-buttons{
-        @apply font-light text-gray-800 flex flex-col h-80 w-80 md:h-120 justify-center md:justify-center gap-8 px-5;
+        @apply font-light text-gray-700 dark:text-gray-300 flex flex-col h-50 md:h-80 w-80 justify-center md:justify-center gap-8 px-5;
     }
     #skills-btn, #works-btn{
-        @apply bg-buttons border-1 shadow-sm border-primary text-2xl h-12 rounded-3xl transition-all duration-200 
-        hover:scale-110 hover:cursor-pointer hover:bg-primary hover:border-gray-600;
+        @apply bg-buttons dark:bg-buttons-dark border-1 shadow-sm border-primary text-2xl h-12 rounded-3xl transition-all duration-200 
+        hover:scale-110 hover:cursor-pointer hover:bg-primary hover:border-gray-600 dark:hover:text-background-dark;
     }
     #skills-btn{
-        @apply mr-15;
+        @apply mr-10 md:mr-15;
     }
     #works-btn{
-        @apply ml-15;
+        @apply ml-10 md:ml-15;
     }
     .nav-link {
         @apply text-[10px] font-light md:text-xs hover:cursor-pointer hover:text-primary;
@@ -80,11 +94,11 @@
         @apply transition-transform duration-200 hover:cursor-pointer hover:scale-110;
     }
     .project-card {
-        @apply bg-cards rounded-lg shadow-shadow p-4 w-70 h-42 flex flex-col items-center gap-3 duration-500 
+        @apply bg-cards dark:bg-cards-dark text-gray-800 dark:text-gray-300 rounded-lg shadow-shadow p-4 w-70 h-42 flex flex-col items-center gap-3 duration-500 
         hover:scale-120 hover:cursor-pointer;
       }
     .project-title {
-        @apply text-xl font-normal text-gray-800;
+        @apply text-xl font-normal;
     }
     .tech-icons {
         @apply flex gap-4 justify-center transition-opacity duration-500 ease-in-out;
@@ -93,7 +107,7 @@
         @apply w-10 h-10 object-contain;
     }
     .project-info {
-        @apply absolute inset-0 px-3 pt-10 pb-1 flex items-center justify-center text-gray-800 text-xs font-normal 
+        @apply absolute inset-0 px-3 pt-10 pb-1 flex items-center justify-center text-xs font-normal 
         opacity-0 transition-opacity duration-500 ease-in-out;
         pointer-events: none;
     }    
@@ -104,4 +118,3 @@
         @apply opacity-100;
     }
 }
-
