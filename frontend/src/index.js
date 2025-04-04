@@ -42,7 +42,7 @@ document.querySelector("#works-btn").addEventListener("click", function () {
     }, 1100); 
 });
 
-//dark mode
+//theme
 if (!localStorage.getItem("theme")) localStorage.setItem("theme", "light");
 
 const themeBtn = document.querySelector(".theme-button");
@@ -78,8 +78,6 @@ document.addEventListener("DOMContentLoaded", () => {
         iconElement.classList.add("fas", "fa-moon");
     }
 });
-
-
 
 //typing effect
 const l1 = "I design and develop";
@@ -125,3 +123,17 @@ function typewriter3() {
 }
 
 window.onload = typewriter1();
+
+//admin
+import axios from 'axios';
+const adminBtn = document.querySelector("#admin");
+adminBtn.addEventListener("click", () => {
+    axios.get('/api/admin')
+    .then((res) => {
+        if(res.data.msg == "Redirect to admin-login")   window.location.href = '/admin-login.html';
+        else if(res.data.msg == "Redirect to admin-page")   console.log(res.data); //redirect to admin-page
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+})

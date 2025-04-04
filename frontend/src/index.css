@@ -5,6 +5,8 @@
     --font-Inter: 'Inter';
     --color-background: #F8F9FA;
     --color-background-dark: #111827;
+    --color-navbar: #E9ECEF;
+    --color-navbar-dark: #0B111B;
     --color-primary: #f78537;
     --color-cards: #FFFFFF;
     --color-cards-dark: #1f2937;
@@ -27,7 +29,7 @@
         @apply bg-background dark:bg-background-dark text-gray-900 dark:text-gray-300 font-Inter flex flex-col items-center;
     }
     nav {
-        @apply border-b-1 border-gray-300 dark:border-gray-700 w-screen flex items-center z-5 h-14 top-0 
+        @apply bg-navbar dark:bg-navbar-dark border-b-1 border-gray-300 dark:border-gray-700 w-screen flex items-center z-5 h-14 top-0 
         justify-around gap-3 px-7 md:px-15;
     }
     .font-outline-1 {
@@ -58,6 +60,9 @@
     }
     #home-button {
         @apply text-sm md:text-lg font-light flex-1/3 hover:cursor-pointer hover:text-primary;
+    }
+    #admin {
+        @apply text-[10px] font-normal fixed bottom-5 right-7 md:right-15 hover:cursor-pointer hover:text-primary;
     }
     .home-info{
         @apply flex flex-col justify-start gap-10 h-80 w-80 md:h-120 md:pt-30;

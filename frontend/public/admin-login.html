@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="src/index.css">
+</head>
+<body class="mt-20 md:mt-50">
+    <h2 class="font-medium text-4xl mb-20">Admin Login</h2>
+    <form class="w-80 sm:w-120 flex flex-col gap-8">
+        <input class="bg-gray-200 dark:bg-gray-800 h-10 w-full border-1 border-gray-300 dark:border-gray-600 rounded-4xl focus:outline-none py-3 px-5"
+         name="email" type="text" placeholder="email" required>
+         <input class="bg-gray-200 dark:bg-gray-800 h-10 w-full border-1 border-gray-300 dark:border-gray-600 rounded-4xl focus:outline-none py-3 px-5"
+         name="password" type="password" placeholder="password" required>
+         <button id="submit-btn" class="bg-buttons dark:bg-buttons-dark border-1 border-primary text-md h-8 w-full rounded-3xl transition-all duration-500 
+          hover:cursor-pointer hover:bg-primary hover:border-gray-600 dark:hover:text-background-dark">Submit</button>
+    </form>
+    <p id="error-message" class="text-xs font-normal mt-20 text-red-500"></p>
+
+    <script type="module" src="src/admin-login.js"></script>
+    <script type="module" src="src/auth.js"></script>
+
+</body>
+</html>
