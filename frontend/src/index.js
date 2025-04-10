@@ -1,13 +1,19 @@
 const homePage = document.getElementById("home-page");
 const skillsPage = document.getElementById("skills-page");
 const projectsPage = document.getElementById("projects-page");
+const aboutPage = document.getElementById("about-page");
+const contactPage = document.getElementById("contact-page");
 
 document.querySelector("#home-button").addEventListener("click", () => {
     homePage.style.display = "flex"; 
+    document.querySelector("#about-btn").style.pointerEvents = "auto";
+    document.querySelector("#contact-btn").style.pointerEvents = "auto";
 
     setTimeout(() => {
         skillsPage.style.transform = "translateX(-100%)";  
         projectsPage.style.transform = "translateX(100%)";  
+        aboutPage.style.transform = "translateY(-100%)";  
+        contactPage.style.transform = "translateY(100%)";  
         homePage.style.transform = "translateX(0)"; 
     }, 0); 
 });
@@ -16,6 +22,8 @@ document.querySelector("#skills-btn").addEventListener("click", function () {
     document.body.style.overflow = "hidden";
     skillsPage.style.display = "flex"; 
     document.querySelector("#home-button").style.pointerEvents = "none";
+    document.querySelector("#about-btn").style.pointerEvents = "none";
+    document.querySelector("#contact-btn").style.pointerEvents = "none";
 
     setTimeout(() => {
         homePage.style.transform = "translateX(100%)";
@@ -31,10 +39,44 @@ document.querySelector("#works-btn").addEventListener("click", function () {
     document.body.style.overflow = "hidden";
     projectsPage.style.display = "flex"; 
     document.querySelector("#home-button").style.pointerEvents = "none";
+    document.querySelector("#about-btn").style.pointerEvents = "none";
+    document.querySelector("#contact-btn").style.pointerEvents = "none";
 
     setTimeout(() => {
         homePage.style.transform = "translateX(-100%)";
         projectsPage.style.transform = "translateX(0)";  
+    }, 0);
+
+    setTimeout(() => {
+        document.querySelector("#home-button").style.pointerEvents = "auto";
+    }, 1100); 
+});
+
+document.querySelector("#about-btn").addEventListener("click", function () {
+    document.body.style.overflow = "hidden";
+    aboutPage.style.display = "flex"; 
+    document.querySelector("#home-button").style.pointerEvents = "none";
+    document.querySelector("#contact-btn").style.pointerEvents = "none";
+
+    setTimeout(() => {
+        homePage.style.transform = "translateY(100%)";
+        aboutPage.style.transform = "translateY(0)";  
+    }, 0);
+
+    setTimeout(() => {
+        document.querySelector("#home-button").style.pointerEvents = "auto";
+    }, 1100); 
+});
+
+document.querySelector("#contact-btn").addEventListener("click", function () {
+    document.body.style.overflow = "hidden";
+    contactPage.style.display = "flex"; 
+    document.querySelector("#home-button").style.pointerEvents = "none";
+    document.querySelector("#about-btn").style.pointerEvents = "none";
+
+    setTimeout(() => {
+        homePage.style.transform = "translateY(-100%)";
+        contactPage.style.transform = "translateY(0)";  
     }, 0);
 
     setTimeout(() => {
@@ -124,8 +166,31 @@ function typewriter3() {
 
 window.onload = typewriter1();
 
-//admin
+//contact
 import axios from 'axios';
+
+const form = document.querySelector("form");
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const data = {
+        name: form.name.value,
+        email: form.email.value,
+        message: form.message.value
+    };
+
+    axios.post('/api/contact/send', data)
+    .then(res => {
+        console.log(res.data);
+        form.reset();
+        document.querySelector("#error-message").innerHTML = "Message Sent Successfully";
+    })
+    .catch(err => {
+        console.error(err);
+    });
+});
+
+//admin
 const adminBtn = document.querySelector("#admin");
 adminBtn.addEventListener("click", () => {
     axios.get('/api/admin')

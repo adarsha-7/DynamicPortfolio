@@ -4,14 +4,14 @@
 @theme {
     --font-Inter: 'Inter';
     --color-background: #F8F9FA;
-    --color-background-dark: #111827;
+    --color-background-dark: #0B111B;
     --color-navbar: #E9ECEF;
     --color-navbar-dark: #0B111B;
     --color-primary: #f78537;
     --color-cards: #FFFFFF;
     --color-cards-dark: #1f2937;
     --color-buttons: #F8F9FA;
-    --color-buttons-dark: #1f2937; 
+    --color-buttons-dark: #111827; 
     --shadow-shadow:  0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -43,13 +43,13 @@
 }
 
 @layer components {
-    #home-page, #skills-page, #projects-page {
+    #home-page, #skills-page, #projects-page, #about-page, #contact-page {
         @apply flex absolute w-full h-full overflow-auto transition-transform duration-1000 ease-in-out pb-10;
     }
     #home-page {
         @apply flex-col md:flex-row justify-center items-center px-10; 
     }
-    #skills-page, #projects-page {
+    #skills-page, #projects-page, #about-page, #contact-page {
        @apply flex-col justify-start items-start hidden pt-30 gap-10 pl-10 md:pl-20 pr-5 md:pr-10;
     }
     #skills-page {
@@ -58,11 +58,19 @@
     #projects-page {
         transform: translateX(100%);
     }
+    #about-page {
+        @apply xl:px-40;
+        transform: translateY(-100%);
+    }
+    #contact-page {
+        @apply xl:px-40;
+        transform: translateY(100%);
+    }
     #home-button {
         @apply text-sm md:text-lg font-light flex-1/3 hover:cursor-pointer hover:text-primary;
     }
     #admin {
-        @apply text-[10px] font-normal fixed bottom-5 right-7 md:right-15 hover:cursor-pointer hover:text-primary;
+        @apply text-[10px] md:text-[13px] font-semibold hover:cursor-pointer hover:text-primary mt-2.5 md:mt-2;
     }
     .home-info{
         @apply flex flex-col justify-start gap-10 h-80 w-80 md:h-120 md:pt-30;
@@ -100,7 +108,7 @@
     }
     .project-card {
         @apply bg-cards dark:bg-cards-dark text-gray-800 dark:text-gray-300 rounded-lg shadow-shadow p-4 w-70 h-42 flex flex-col items-center gap-3 duration-500 
-        hover:scale-120 hover:cursor-pointer;
+        hover:scale-120 hover:cursor-pointer border-b-1 border-r-1 border-gray-300 dark:border-gray-700;
       }
     .project-title {
         @apply text-xl font-normal;
@@ -121,5 +129,9 @@
     }
     .project-card:hover .project-info {
         @apply opacity-100;
+    }
+
+    #adarsha-image {
+        @apply w-full sm:w-80 sm:h-110 lg:w-100 lg:h-130;
     }
 }
