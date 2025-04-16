@@ -1,11 +1,23 @@
+const http = require('http');
 const express = require('express');
+const socketio = require('socket.io');
 const cookieParser = require('cookie-parser');
+require('dotenv').config() 
+
+const PORTb = 5500;
+const PORTf = 5000;
+
 const app = express();
 
 app.use(cookieParser());
 app.use(express.json()); 
 
-const PORT = 5500;
+const server = http.createServer(app);
+const io = socketio(server, {
+    cors: {origin: `http://localhost:${PORTf}`}
+})
+
+module.exports = { io };
 
 const admin = require('./admin-route');
 app.use('/api/admin', admin);
@@ -13,6 +25,18 @@ app.use('/api/admin', admin);
 const contact = require('./contact-route');
 app.use('/api/contact', contact);
 
-app.listen(PORT, () => {
-    console.log(`Server listening on port ${PORT}`);
-});
+const connectDB = require('./db/connect');
+
+const run = () => {
+    connectDB(process.env.MONGO_URI)
+    .then(() => {   
+        server.listen(PORTb, () => {
+            console.log(`Server listening on port ${PORTb}`);
+        })
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+}
+
+run();

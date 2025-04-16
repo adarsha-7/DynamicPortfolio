@@ -24,8 +24,11 @@ form.addEventListener("submit", (event) => {
         if(res.data.msg == "Incorrect admin password")
             document.querySelector("#error-message").innerHTML = "Incorrect admin password";
 
-        if(res.data.msg == "Login Success") //redirect to admin page
-            document.querySelector("#error-message").innerHTML = "Login Success";
+        if(res.data.msg == "Login Success") {
+            document.querySelector("#error-message").innerHTML = `Login Success. Go back to home page and go to admin page.`;
+            form.reset();
+            Notification.requestPermission();
+        }
     })
     .catch(err => {
         console.error(err);

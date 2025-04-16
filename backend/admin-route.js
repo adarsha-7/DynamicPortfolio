@@ -1,21 +1,26 @@
 const express = require('express');
 const router = express.Router();
+const path = require('path');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 const authenticateToken = function(req, res, next) {
     const accessToken = req.cookies.accessToken;
-    if(!accessToken) return res.json({msg: "Redirect to admin-login"});
+    if(!accessToken) return res.redirect('/admin-login.html');
+
     else {
         jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
-            if(err) return res.json(err);
+            if(err) {
+                console.log(err);
+                return res.redirect('/admin-login.html');    
+            }
             next();
         })
     }
 }
 
 router.get('/', authenticateToken, (req, res) => {
-    res.json({msg: "Redirect to admin-page"});
+    res.sendFile(path.resolve(__dirname, '../frontend/private/admin-page.html'));
 })
 
 router.get('/login', (req, res) => {
@@ -28,7 +33,7 @@ router.get('/login', (req, res) => {
         email: req.query.email
     }
 
-    const accessToken = jwt.sign(userPayload, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '30s'})
+    const accessToken = jwt.sign(userPayload, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '300s'})
     const refreshToken = jwt.sign(userPayload, process.env.REFRESH_TOKEN_SECRET)
 
     res.cookie('accessToken', accessToken, {
