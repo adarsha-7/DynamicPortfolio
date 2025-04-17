@@ -27,18 +27,21 @@ router.post('/send-message', (req, res) => {
         const adminSocketId = getAdminSocketId();
         if (adminSocketId) {
             io.to(adminSocketId).emit('message-notification', message);
+            Message.findOneAndUpdate(
+                { id: message.id },
+                { notified: true }
+            ).catch((err) => console.error('Update failed:', err));
         }
         res.send(message);
     })
     .catch((err) => {
         console.error(err);
         res.json(err);
-    })
-    
+    });
+});
 
     //user is sent email notifying that a message is sent along with message data,
     //in admin panel, there is a message which can be viewed
-})
 
 function RandomString() {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';

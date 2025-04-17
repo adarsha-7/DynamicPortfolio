@@ -15,7 +15,7 @@ function refreshToken() {
                 if(Notification.permission == 'granted') {
                     new Notification("New Message Received", {
                         body: `From: ${message.name}\n${message.value.slice(0, 100)}`,
-                        icon: '/icons/favicon.png'
+                        icon: '/icons/folder-blue.png'
                     })
                 }
             })
