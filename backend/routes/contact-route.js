@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const Message = require('./models/message');
+const Message = require('../models/message');
 const { getAdminSocketId } = require('./socket.js');
-const { io } = require('./app.js'); 
+const { io } = require('../app.js'); 
 
 function RandomString() {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';

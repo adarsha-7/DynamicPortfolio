@@ -130,8 +130,4 @@
     .project-card:hover .project-info {
         @apply opacity-100;
     }
-
-    #adarsha-image {
-        @apply w-full sm:w-80 sm:h-110 lg:w-100 lg:h-130;
-    }
 }

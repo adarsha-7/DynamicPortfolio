@@ -1,4 +1,4 @@
-const { io } = require('./app.js');
+const { io } = require('../app.js');
 
 let adminSocketId = null;
 
