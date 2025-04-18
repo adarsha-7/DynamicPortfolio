@@ -6,7 +6,7 @@ axios.get('/api/content/')
     
     document.querySelector("#resume-btn").href = res.resume;
 
-    //image work
+    document.querySelector(".about-image").src = res.about.image;
     document.querySelector(".about-content").innerHTML = res.about.description;
 
     const workContainer = document.querySelector("#work-container");
