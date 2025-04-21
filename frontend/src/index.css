@@ -59,11 +59,11 @@
         transform: translateX(100%);
     }
     #about-page {
-        @apply xl:px-40;
+        @apply lg:px-20 xl:px-40;
         transform: translateY(-100%);
     }
     #contact-page {
-        @apply xl:px-40;
+        @apply lg:px-20 xl:px-40;
         transform: translateY(100%);
     }
     #home-button {

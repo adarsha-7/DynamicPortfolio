@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 //typing effect
-const l1 = "I design and develop";
+const l1 = "Web developer specializing in";
 const l2 = "front-end and back-end";
 const l3 = "for websites.";
 
@@ -191,7 +191,12 @@ form.addEventListener("submit", (event) => {
 }); 
 
 //admin
+
 const adminBtn = document.querySelector("#admin");
 adminBtn.addEventListener("click", () => {
-    window.location.href = '/api/admin';
+    if (localStorage.getItem("mode") == "visitor") 
+        window.location.href = '/api/admin';
+    
+    else if (localStorage.getItem("mode") == "admin") 
+        window.location.href = '/';
 })

@@ -117,10 +117,15 @@
   </div>
 
   <div id="about-page">
-    <h2 class="font-light text-3xl">ABOUT ME</h2>
-    <div class="flex flex-col justify-items-start gap-5 lg:flex-row-reverse">
-      <img src="" class="about-image sm:w-80 sm:h-110 lg:w-100 lg:h-130" alt="Adarsha">
-      <div class="about-content">
+    <div class="flex gap-10 align-middle">
+      <h2 class="font-light text-3xl">ABOUT ME</h2>
+    </div>
+  
+    <div class="flex flex-col gap-5 lg:flex-row-reverse">
+      <div class="flex flex-col gap-5 sm:w-80 sm:h-auto lg:w-100">
+        <img src="" class="about-image sm:w-80 sm:h-auto lg:w-100" alt="Adarsha">
+      </div>
+      <div class="about-content flex-1">
         
       </div>
     </div>
@@ -152,6 +157,8 @@
   <script type="module" src="src/content.js"></script>
   <script type="module" src="src/index.js"></script>
   <script type="module" src="src/auth.js"></script>
+
+  <script>localStorage.setItem("mode", "visitor")</script>
 
 </body>
 

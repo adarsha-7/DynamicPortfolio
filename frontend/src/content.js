@@ -2,7 +2,6 @@ import axios from 'axios';
 axios.get('/api/content/')
 .then((res) => {
     res = res.data;
-    console.log(res);
     
     document.querySelector("#resume-btn").href = res.resume;
 

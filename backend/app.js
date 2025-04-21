@@ -28,6 +28,9 @@ app.use('/api/admin', admin);
 const contact = require('./routes/contact-route');
 app.use('/api/contact', contact);
 
+const edit = require('./routes/edit-route');
+app.use('/api/edit', edit);
+
 const connectDB = require('./db/connect');
 
 const run = () => {
