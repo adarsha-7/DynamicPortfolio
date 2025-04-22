@@ -99,18 +99,25 @@ router.put('/update-work', (req, res) => {
 
 router.get('/next-position', (req, res) => {
     Work.findOne()
-    .sort({ position: -1 })
+    .sort({ position: 1 })
     .then((work) => {
-        const highestPosition = work ? work.position : -1;
-        res.json({ nextPosition: highestPosition + 1 });
+        const lowestPosition = work ? work.position : 0;
+        res.json({ nextPosition: lowestPosition });
     });
 });
 
 
 router.post('/add-work', (req, res) => {
-    console.log(req.body);
     Work.create(req.body)
     .then((work) => {
+        Work.updateMany(
+            { title: { $ne: work.title } },            
+            { $inc: { position: 1 } }            
+        )
+        .catch((err) => {
+            console.error(err);
+            res.json(err);
+        }); 
         res.json(work);
     })
     .catch((err) => {
