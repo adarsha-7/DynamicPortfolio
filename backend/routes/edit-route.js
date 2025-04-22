@@ -3,6 +3,7 @@ const router = express.Router();
 const multer = require('multer');
 const cloudinary = require('cloudinary').v2;
 const Content = require('../models/content');
+const Work = require('../models/work');
 require('dotenv').config();
 
 router.post('/about-text', (req, res) => {
@@ -81,4 +82,59 @@ router.post('/about-image', upload.single('newImage'), (req, res) => {
 
 */
 
+router.put('/update-work', (req, res) => {
+    Work.findOneAndUpdate(
+        { title: req.body.title },
+        { title: req.body.newTitle, description: req.body.newDescription, position: req.body.newPosition },
+        { new: true }
+      )
+    .then((work) => {
+        res.json(work);
+    })
+    .catch((err) => {
+        console.error(err);
+        res.json(err);
+    }); 
+});
+
+router.get('/next-position', (req, res) => {
+    Work.findOne()
+    .sort({ position: -1 })
+    .then((work) => {
+        const highestPosition = work ? work.position : -1;
+        res.json({ nextPosition: highestPosition + 1 });
+    });
+});
+
+
+router.post('/add-work', (req, res) => {
+    console.log(req.body);
+    Work.create(req.body)
+    .then((work) => {
+        res.json(work);
+    })
+    .catch((err) => {
+        console.error(err);
+        res.json(err);
+    }); 
+})
+
+router.delete('/delete-work', (req, res) => {
+    Work.findOneAndDelete({ title: req.body.title })
+    .then((work) => {
+        Work.updateMany(
+            { position: { $gt: work.position } },
+            { $inc: { position: -1 } }            
+        )
+        .catch((err) => {
+            console.error(err);
+            res.json(err);
+        }); 
+        res.json(work);
+    })
+    .catch((err) => {
+        console.error(err);
+        res.json(err);
+    }); 
+});
 module.exports = router;
