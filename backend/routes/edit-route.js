@@ -6,7 +6,20 @@ const Content = require('../models/content');
 const Work = require('../models/work');
 require('dotenv').config();
 
-router.post('/about-text', (req, res) => {
+const authenticateToken = function(req, res, next) {
+    const accessToken = req.cookies.accessToken;
+    if(!accessToken) return res.json({error: "Access Denied"});
+
+    jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+        if(err) {
+            console.log(err);
+            return res.json({error: "Access Denied"});
+        }
+        next();
+    });
+}
+
+router.post('/about-text', authenticateToken, (req, res) => {
     Content.findOneAndUpdate(
         { },
         { $set: { "about.description": req.body.newText } },
@@ -29,7 +42,7 @@ cloudinary.config({
 
 const upload = multer({ storage: multer.memoryStorage() });
 
-router.post('/about-image', upload.single('newImage'), (req, res) => {
+router.post('/about-image', authenticateToken, upload.single('newImage'), (req, res) => {
 
     cloudinary.uploader.upload_stream({ 
         resource_type: 'image', 
@@ -82,7 +95,7 @@ router.post('/about-image', upload.single('newImage'), (req, res) => {
 
 */
 
-router.put('/update-work', (req, res) => {
+router.put('/update-work', authenticateToken, (req, res) => {
     Work.findOneAndUpdate(
         { title: req.body.title },
         { title: req.body.newTitle, description: req.body.newDescription, position: req.body.newPosition },
@@ -107,7 +120,7 @@ router.get('/next-position', (req, res) => {
 });
 
 
-router.post('/add-work', (req, res) => {
+router.post('/add-work', authenticateToken, (req, res) => {
     Work.create(req.body)
     .then((work) => {
         Work.updateMany(
@@ -126,7 +139,7 @@ router.post('/add-work', (req, res) => {
     }); 
 })
 
-router.delete('/delete-work', (req, res) => {
+router.delete('/delete-work', authenticateToken, (req, res) => {
     Work.findOneAndDelete({ title: req.body.title })
     .then((work) => {
         Work.updateMany(

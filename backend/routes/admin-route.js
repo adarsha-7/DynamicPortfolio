@@ -22,7 +22,7 @@ router.get('/', authenticateToken, (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-    if (req.query.email != 'adarshghimire2005@gmail.com') 
+    if (req.query.email != process.env.ADMIN_EMAIL) 
         return res.json({msg: "Incorrect admin email"});
     if (req.query.password != process.env.ADMIN_PASSWORD)
         return res.json({msg: "Incorrect admin password"});
