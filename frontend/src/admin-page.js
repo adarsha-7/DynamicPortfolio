@@ -141,7 +141,7 @@ messageIcon.addEventListener("click", () => {
 
                 const el = `
                 <div id="modal" class="fixed inset-0 bg-black/20 flex items-center justify-center z-10">
-                    <div class="bg-white dark:bg-background-dark p-6 rounded-lg w-full max-w-md relative shadow-lg">
+                    <div class="bg-white dark:bg-background-dark border-1 border-gray-500 p-6 rounded-lg w-full max-w-md relative shadow-lg">
                         <button class="absolute top-2 right-3 text-gray-500 hover:text-red-500 text-lg hover:cursor-pointer" id="closeModal">&times;</button>
                         <h2 class="text-lg font-light mb-2">${nameEmail}</h2>
                         <p class="text-lg mb-4 font-normal">${value}</p>

@@ -11,7 +11,7 @@ function refreshToken() {
     .then(res => console.log(res.data))
     .then(res => {
         if(res !== null) {
-            const socket = io(`http://localhost:${PORTb}`);
+            const socket = io(import.meta.env.VITE_URL);
             socket.emit('admin-join');
 
             socket.on('message-notification', (message) => {
