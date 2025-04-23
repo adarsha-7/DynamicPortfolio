@@ -13,9 +13,9 @@ const app = express();
 app.use(cookieParser());
 app.use(express.json());
 app.use(cors({
-    origin: process.env.FRONTEND_URL,  
-    credentials: true 
-  }));
+    origin: 'https://adarshaghimire.com.np',
+    credentials: true
+}));  
 
 const server = http.createServer(app);
 const io = socketio(server, {
