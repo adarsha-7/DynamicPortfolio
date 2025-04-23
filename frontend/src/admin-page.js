@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 const editBtn = document.querySelector('.edit-about-info');
 const aboutContent = document.querySelector('.about-content');
 

@@ -17,4 +17,5 @@ io.on('connection', (socket) => {
 });
 
 const getAdminSocketId = () => adminSocketId;
+
 module.exports = { getAdminSocketId };

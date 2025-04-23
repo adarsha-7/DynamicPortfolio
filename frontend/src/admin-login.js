@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 document.addEventListener("DOMContentLoaded", () => {
     if (localStorage.getItem("theme") === "dark") {
         document.documentElement.classList.add("dark");
@@ -6,8 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
         document.documentElement.classList.remove("dark");
     }
 });
-
-import axios from 'axios';
 
 const form = document.querySelector("form");
 form.addEventListener("submit", (event) => {

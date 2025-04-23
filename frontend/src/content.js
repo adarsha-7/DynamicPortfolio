@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 axios.get('/api/content/')
 .then((res) => {
     res = res.data;
