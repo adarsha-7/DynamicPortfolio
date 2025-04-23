@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+const baseURL = import.meta.env.VITE_ENV === 'production' ? 'https://dynamicportfolio-production-ae6c.up.railway.app/' : '';
+
 const callback = (res) => {
     //load content
     res = res.data;
@@ -70,12 +72,12 @@ const callback = (res) => {
                     newDescription: form.querySelector("#form-description").value,
                     newPosition: form.querySelector("#form-position").value
                 }
-                axios.put('/api/edit/update-work', newData)
+                axios.put(`${baseURL}/api/edit/update-work`, newData)
                     .then((res) => {
                         console.log("Updated work: ", res.data);
                         form.remove();
                         workContainer.innerHTML = '';
-                        axios.get('/api/content/')
+                        axios.get(`${baseURL}/api/content/`)
                         .then(callback)
                         .catch(err => console.error(err))
                     })
@@ -107,13 +109,13 @@ const callback = (res) => {
 
                 //for confirmation element, confirm button click event-> delete 
                 confirmation.querySelector("#confirm").addEventListener("click", () => {
-                    axios.delete("/api/edit/delete-work", { data: { title: card.id } })
+                    axios.delete(`${baseURL}/api/edit/delete-work`, { data: { title: card.id } })
                     .then((res) => {
                         console.log("Deleted work: ", res.data);
                         form.remove();
                         confirmation.remove();
                         workContainer.innerHTML = '';
-                        axios.get('/api/content/')
+                        axios.get(`${baseURL}/api/content/`)
                         .then(callback)
                         .catch(err => console.error(err))
                     })
@@ -195,7 +197,7 @@ const callback = (res) => {
             backend += addForm.querySelector('input[type="checkbox"][value="mongo"]').checked ? `<img src="/icons/mongodb-sm.png" alt="MongoDB logo">` : "";
             backend += addForm.querySelector('input[type="checkbox"][value="jwt"]').checked ? `<img src="/icons/jwt-sm.png" alt="JWT logo">` : "";
 
-            axios.get('/api/edit/next-position')
+            axios.get(`${baseURL}/api/edit/next-position`)
             .then((res) => {
                 const newProject = {
                     title: addForm.querySelector("#add-form-title").value,
@@ -205,13 +207,13 @@ const callback = (res) => {
                     frontend: frontend,
                     backend: backend
                 }
-                axios.post('/api/edit/add-work', newProject)
+                axios.post(`${baseURL}/api/edit/add-work`, newProject)
                 .then((res) => {
                     console.log("Added work: ", res.data);
                     addForm.remove();
                     workContainer.innerHTML = '';
 
-                    axios.get('/api/content/')
+                    axios.get(`${baseURL}/api/content/`)
                     .then(callback)
                     .catch(err => console.error(err))
                 })
@@ -234,6 +236,6 @@ const callback = (res) => {
     })
 }
 
-axios.get('/api/content/')
+axios.get(`${baseURL}/api/content/`)
 .then(callback)
 .catch(err => console.error(err))

@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-axios.get('/api/content/')
+const baseURL = import.meta.env.VITE_ENV === 'production' ? 'https://dynamicportfolio-production-ae6c.up.railway.app/' : '';
+
+axios.get(`${baseURL}/api/content/`)
 .then((res) => {
     res = res.data;
     

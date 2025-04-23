@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+const baseURL = import.meta.env.VITE_ENV === 'production' ? 'https://dynamicportfolio-production-ae6c.up.railway.app/' : '';
+
 document.addEventListener("DOMContentLoaded", () => {
     if (localStorage.getItem("theme") === "dark") {
         document.documentElement.classList.add("dark");
@@ -17,7 +19,7 @@ form.addEventListener("submit", (event) => {
     const password = form.password.value;
     const params = {email, password};
 
-    axios.get('/api/admin/login', {params})
+    axios.get(`${baseURL}/api/admin/login`, {params})
     .then(res => {
         if(res.data.msg == "Incorrect admin email")
             document.querySelector("#error-message").innerHTML = "Incorrect admin email";

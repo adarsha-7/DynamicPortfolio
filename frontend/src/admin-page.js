@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+const baseURL = import.meta.env.VITE_ENV === 'production' ? 'https://dynamicportfolio-production-ae6c.up.railway.app/' : '';
+
 const editBtn = document.querySelector('.edit-about-info');
 const aboutContent = document.querySelector('.about-content');
 
@@ -8,7 +10,7 @@ editBtn.addEventListener('click', () => {
 
     if (textarea) {
         const newText = textarea.value;
-        axios.post('/api/edit/about-text', {newText: newText})
+        axios.post(`${baseURL}/api/edit/about-text`, {newText: newText})
         .then((res) => {
             textarea.remove();
             aboutContent.innerHTML = res.data.text;
@@ -59,7 +61,7 @@ uploadBtn.addEventListener('click', () => {
             const formData = new FormData();
             formData.append('newImage', fileInput.files[0]);
             
-            axios.post('/api/edit/about-image', formData)
+            axios.post(`${baseURL}/api/edit/about-image`, formData)
             .then((res) => {
                 console.log(res.data.image);
                 document.querySelector(".about-image").src = res.data.image;
@@ -80,7 +82,7 @@ uploadBtn.addEventListener('click', () => {
 // messages badge
 const badge = document.getElementById("message-badge");
 const updateMessageBadge = () => {
-    axios.get('/api/edit/messages')
+    axios.get(`${baseURL}/api/edit/messages`)
     .then(res => {
         let unseenCount = 0;
         const messages = res.data;
@@ -107,7 +109,7 @@ const messageList = document.getElementById("message-list");
 
 messageIcon.addEventListener("click", () => {
     messageBox.classList.toggle("hidden");
-    axios.get('/api/edit/messages')
+    axios.get(`${baseURL}/api/edit/messages`)
     .then((res) => {
         const messages = res.data;
         messageList.innerHTML = "";
@@ -133,7 +135,7 @@ messageIcon.addEventListener("click", () => {
                 const time = block.querySelector("span:last-child").textContent.trim();
                 const created = block.getAttribute("data-created"); 
 
-                axios.put('/api/edit/mark-seen', { created })
+                axios.put(`${baseURL}/api/edit/mark-seen`, { created })
                     .catch(err => console.error(err));
 
                 const el = `

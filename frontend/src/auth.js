@@ -1,10 +1,12 @@
 import axios from 'axios';
 import { io } from 'socket.io-client';
 
+const baseURL = import.meta.env.VITE_ENV === 'production' ? 'https://dynamicportfolio-production-ae6c.up.railway.app/' : '';
+
 const PORTb = 5500;
 
 function refreshToken() {
-    axios.post('/api/admin/refresh')
+    axios.post(`${baseURL}/api/admin/refresh`)
     .then(res => console.log(res.data))
     .then(res => {
         if(res !== null) {
@@ -21,7 +23,7 @@ function refreshToken() {
                 }
                 //update message badge
                 const badge = document.getElementById("message-badge");
-                axios.get('/api/edit/messages')
+                axios.get(`${baseURL}/api/edit/messages`)
                 .then(res => {
                     let unseenCount = 0;
                     const messages = res.data;

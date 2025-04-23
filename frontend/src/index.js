@@ -1,3 +1,7 @@
+import axios from 'axios';
+
+const baseURL = import.meta.env.VITE_ENV === 'production' ? 'https://dynamicportfolio-production-ae6c.up.railway.app/' : '';
+
 const homePage = document.getElementById("home-page");
 const skillsPage = document.getElementById("skills-page");
 const projectsPage = document.getElementById("projects-page");
@@ -167,8 +171,6 @@ function typewriter3() {
 window.onload = typewriter1();
 
 //contact
-import axios from 'axios';
-
 const form = document.querySelector("#contact");
 form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -179,7 +181,7 @@ form.addEventListener("submit", (event) => {
         message: form.message.value
     };
 
-    axios.post('/api/contact/send-message', data)
+    axios.post(`${baseURL}/api/contact/send-message`, data)
     .then(res => {
         console.log(res.data);
         form.reset();
@@ -195,7 +197,7 @@ form.addEventListener("submit", (event) => {
 const adminBtn = document.querySelector("#admin");
 adminBtn.addEventListener("click", () => {
     if (localStorage.getItem("mode") == "visitor") 
-        window.location.href = '/api/admin';
+        window.location.href = `${baseURL}/api/admin`;
     
     else if (localStorage.getItem("mode") == "admin") 
         window.location.href = '/';
