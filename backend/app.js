@@ -2,6 +2,7 @@ const http = require('http');
 const express = require('express');
 const socketio = require('socket.io');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 require('dotenv').config();
 
 const PORTb = 5500;
@@ -11,6 +12,10 @@ const app = express();
 
 app.use(cookieParser());
 app.use(express.json());
+app.use(cors({
+    origin: process.env.FRONTEND_URL,  
+    credentials: true 
+  }));
 
 const server = http.createServer(app);
 const io = socketio(server, {
