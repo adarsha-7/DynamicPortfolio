@@ -136,9 +136,6 @@ messageIcon.addEventListener("click", () => {
                 const time = block.querySelector("span:last-child").textContent.trim();
                 const created = block.getAttribute("data-created"); 
 
-                axios.put(`${baseURL}/api/edit/mark-seen`, { created })
-                    .catch(err => console.error(err));
-
                 const el = `
                 <div id="modal" class="fixed inset-0 bg-black/20 flex items-center justify-center z-10">
                     <div class="bg-white dark:bg-background-dark border-1 border-gray-300 dark:border-gray-800 p-6 rounded-lg w-full max-w-md relative shadow-lg">
@@ -162,7 +159,10 @@ messageIcon.addEventListener("click", () => {
                         modal.remove();
                     }
                 });
-                updateMessageBadge();
+
+                axios.put(`${baseURL}/api/edit/mark-seen`, { created })
+                .then(res => updateMessageBadge())
+                .catch(err => console.error(err));
             });
         });
     })
