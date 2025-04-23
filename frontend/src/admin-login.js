@@ -1,14 +1,13 @@
 import axios from 'axios';
+axios.defaults.withCredentials = true;
 
 const baseURL = import.meta.env.VITE_ENV === 'production' ? import.meta.env.VITE_URL : '';
 
 document.addEventListener("DOMContentLoaded", () => {
-    if (localStorage.getItem("theme") === "dark") {
+    if (localStorage.getItem("theme") === "dark") 
         document.documentElement.classList.add("dark");
-    }
-    else {
+    else 
         document.documentElement.classList.remove("dark");
-    }
 });
 
 const form = document.querySelector("form");

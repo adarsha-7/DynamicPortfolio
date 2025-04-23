@@ -1,4 +1,5 @@
 import axios from 'axios';
+axios.defaults.withCredentials = true;
 import { io } from 'socket.io-client';
 
 const baseURL = import.meta.env.VITE_ENV === 'production' ? import.meta.env.VITE_URL : '';
