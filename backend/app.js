@@ -13,13 +13,13 @@ const app = express();
 app.use(cookieParser());
 app.use(express.json());
 app.use(cors({
-    origin: 'https://adarshaghimire.com.np',
+    origin: process.env.FRONTEND_URL,
     credentials: true
 }));  
 
 const server = http.createServer(app);
 const io = socketio(server, {
-    cors: { origin: `http://localhost:${PORTf}` }
+    cors: { origin: process.env.FRONTEND_URL }
 });
 
 module.exports = { io };
