@@ -1,24 +1,23 @@
 const express = require('express');
 const router = express.Router();
-const path = require('path');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 const authenticateToken = function(req, res, next) {
     const accessToken = req.cookies.accessToken;
-    if(!accessToken) return res.redirect('/admin-login.html');
+    if(!accessToken) return res.json({Authenticated: false, msg: "Access denied"});
 
     jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
         if(err) {
             console.log(err);
-            return res.redirect('/admin-login.html');
+            return res.json({Authenticated: false, msg: "Access denied"});
         }
         next();
     });
 }
 
 router.get('/', authenticateToken, (req, res) => {
-    res.sendFile(path.join(__dirname, '../../frontend/private/admin-page.html'));
+    res.json({Authenticated: true, msg: "Access given"});
 });
 
 router.get('/login', (req, res) => {

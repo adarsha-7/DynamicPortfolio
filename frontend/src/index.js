@@ -196,9 +196,15 @@ form.addEventListener("submit", (event) => {
 
 const adminBtn = document.querySelector("#admin");
 adminBtn.addEventListener("click", () => {
-    if (localStorage.getItem("mode") == "visitor") 
-        window.location.href = `${baseURL}/api/admin`;
-    
+    if (localStorage.getItem("mode") == "visitor") {
+        axios.get(`${baseURL}/api/admin`)
+        .then((res) => {
+            if (res.data.Authenticated)
+                window.location.href = 'admin-page.html';
+            else
+                window.location.href = 'admin-login.html';
+        })
+    }
     else if (localStorage.getItem("mode") == "admin") 
         window.location.href = '/';
 })
