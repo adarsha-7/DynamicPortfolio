@@ -1,4 +1,5 @@
 import axios from 'axios';
+import './index.css';
 
 const baseURL = import.meta.env.VITE_ENV === 'production' ? import.meta.env.VITE_URL : '';
 
