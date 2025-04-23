@@ -20,9 +20,6 @@ const messageSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    id: {
-        type: String
-    },
     notified: {
         type: Boolean,
         default: false

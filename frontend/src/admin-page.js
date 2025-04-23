@@ -75,3 +75,99 @@ uploadBtn.addEventListener('click', () => {
         });
     }
 });
+
+// messages badge
+const badge = document.getElementById("message-badge");
+const updateMessageBadge = () => {
+    axios.get('/api/edit/messages')
+    .then(res => {
+        let unseenCount = 0;
+        const messages = res.data;
+        messages.forEach((message) => {
+            if(!(message.seen)) unseenCount++;
+        })
+        if (unseenCount > 0) {
+            badge.textContent = unseenCount;
+            badge.classList.remove("hidden");
+            badge.classList.add("flex");
+        } 
+        else {
+            badge.classList.remove("flex");
+            badge.classList.add("hidden");
+        }
+    })
+}
+
+updateMessageBadge();
+
+const messageIcon = document.getElementById("message-icon");
+const messageBox = document.getElementById("message-box");
+const messageList = document.getElementById("message-list");
+
+messageIcon.addEventListener("click", () => {
+    messageBox.classList.toggle("hidden");
+    axios.get('/api/edit/messages')
+    .then((res) => {
+        const messages = res.data;
+        messageList.innerHTML = "";
+        messages.forEach(msg => {
+            const fontWeight = msg.seen ? 'font-light' : 'font-bold';
+            
+            const block = `
+            <div class="message-block bg-background dark:bg-background-dark p-3 rounded-md text-sm border border-gray-300 dark:border-gray-800 cursor-pointer" data-created="${msg.created}">
+                <p class="${fontWeight}">${msg.value}</p>
+                <div class="${fontWeight} font-bold flex justify-between text-xs text-gray-500 mt-2">
+                    <span>${msg.name} (${msg.email})</span>
+                    <span>${new Date(msg.created).toLocaleString()}</span>
+                </div>
+            </div>
+            `;
+            messageList.innerHTML += block;
+        });
+
+        document.querySelectorAll(".message-block").forEach((block) => {
+            block.addEventListener("click", () => {
+                const value = block.querySelector("p").textContent.trim();
+                const nameEmail = block.querySelector("span:first-child").textContent.trim();
+                const time = block.querySelector("span:last-child").textContent.trim();
+                const created = block.getAttribute("data-created"); 
+
+                axios.put('/api/edit/mark-seen', { created })
+                    .catch(err => console.error(err));
+
+                const el = `
+                <div id="modal" class="fixed inset-0 bg-black/20 flex items-center justify-center z-10">
+                    <div class="bg-white dark:bg-background-dark p-6 rounded-lg w-full max-w-md relative shadow-lg">
+                        <button class="absolute top-2 right-3 text-gray-500 hover:text-red-500 text-lg hover:cursor-pointer" id="closeModal">&times;</button>
+                        <h2 class="text-lg font-light mb-2">${nameEmail}</h2>
+                        <p class="text-lg mb-4 font-normal">${value}</p>
+                        <p class="text-xs text-right text-gray-400">${time}</p>
+                    </div>
+                </div>
+                `;
+
+                document.body.insertAdjacentHTML('beforeend', el);
+                const modal = document.getElementById("modal");
+
+                modal.querySelector('#closeModal').addEventListener('click', () => {
+                    modal.remove();
+                });
+
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.remove();
+                    }
+                });
+                updateMessageBadge();
+            });
+        });
+    })
+    .catch((err) => {
+        console.error(err);
+    });
+});
+
+document.addEventListener("click", (e) => {
+    if (!messageBox.contains(e.target) && !messageIcon.contains(e.target))
+        messageBox.classList.add("hidden");
+});

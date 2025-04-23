@@ -5,6 +5,7 @@ const multer = require('multer');
 const cloudinary = require('cloudinary').v2;
 const Content = require('../models/content');
 const Work = require('../models/work');
+const Message = require('../models/message');
 require('dotenv').config();
 
 const authenticateToken = function(req, res, next) {
@@ -95,6 +96,33 @@ router.post('/about-image', upload.single('newImage'), (req, res) => {
 });
 
 */
+
+router.get('/messages', authenticateToken, (req, res) => {
+    Message.find()
+    .sort({ created: -1 })
+    .limit(8)
+    .then(messages => {
+        res.json(messages);
+    })
+    .catch(err => {
+        console.error(err);
+        res.json(err);
+    });
+})
+
+router.put('/mark-seen', authenticateToken, (req, res) => {
+    Message.findOneAndUpdate(
+        { created : req.body.created },
+        { seen: true },
+        { new: true })
+    .then((message) => {
+        res.json(message);
+    })
+    .catch(err => {
+        console.error(err);
+        res.json(err);
+    });
+})
 
 router.put('/update-work', authenticateToken, (req, res) => {
     Work.findOneAndUpdate(

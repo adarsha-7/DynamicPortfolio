@@ -5,16 +5,6 @@ const { getAdminSocketId } = require('./socket.js');
 const { io } = require('../app.js'); 
 const sgMail = require('@sendgrid/mail');
 
-function RandomString() {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let result = '';
-    for (let i = 0; i < 16; i++) {
-        const randomIndex = Math.floor(Math.random() * characters.length);
-        result += characters.charAt(randomIndex);
-    }
-    return result;
-}
-
 router.post('/send-message', (req, res) => {
     const data = req.body;
 
@@ -22,8 +12,7 @@ router.post('/send-message', (req, res) => {
     Message.create({
         name: data.name,
         email: data.email,
-        value: data.message,
-        id: RandomString()
+        value: data.message
     })
     .then((message) => { 
         //if admin is active i.e. opened the portfolio, send notification
