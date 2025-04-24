@@ -8,7 +8,7 @@
 
 ## Tech Stack
 ### Frontend: 
-####  HTML + Tailwind CSS + JavaScript
+#### - HTML + Tailwind CSS + JavaScript
 
 ### Backend:
 #### - Node.js + Express.js + MongoDB
