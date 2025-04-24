@@ -12,7 +12,7 @@ function refreshToken() {
     .then(res => {
         if(res !== null) {
             let socket;
-            if (import.meta.env.VITE_URL == 'production')
+            if (import.meta.env.VITE_ENV == 'production')
                 socket = io(import.meta.env.VITE_URL);
             else 
                 socket = io(import.meta.env.VITE_URL_DEV);
