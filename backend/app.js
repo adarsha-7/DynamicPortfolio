@@ -12,14 +12,21 @@ const app = express();
 
 app.use(cookieParser());
 app.use(express.json());
+
+let url;
+if (process.env.ENV == 'production')
+    url = process.env.FRONTEND_URL
+else
+    url = process.env.FRONTEND_URL_DEV 
+
 app.use(cors({
-    origin: process.env.FRONTEND_URL,
+    origin: url,
     credentials: true
 }));  
 
 const server = http.createServer(app);
 const io = socketio(server, {
-    cors: { origin: process.env.FRONTEND_URL }
+    cors: { origin: url }
 });
 
 module.exports = { io };

@@ -97,6 +97,21 @@ router.post('/about-image', upload.single('newImage'), (req, res) => {
 
 */
 
+router.put('/resume', authenticateToken, (req, res) => {
+    Content.findOneAndUpdate(
+        { },
+        { resume: req.body.newLink },
+        { new: true }
+    )
+    .then((content) => {
+        res.json(content);
+    })
+    .catch(err => {
+        console.error(err);
+        res.json(err);
+    });
+})
+
 router.get('/messages', authenticateToken, (req, res) => {
     Message.find()
     .sort({ created: -1 })

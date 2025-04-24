@@ -11,7 +11,12 @@ function refreshToken() {
     .then(res => console.log(res.data))
     .then(res => {
         if(res !== null) {
-            const socket = io(import.meta.env.VITE_URL);
+            let socket;
+            if (import.meta.env.VITE_URL == 'production')
+                socket = io(import.meta.env.VITE_URL);
+            else 
+                socket = io(import.meta.env.VITE_URL_DEV);
+
             socket.emit('admin-join');
 
             socket.on('message-notification', (message) => {

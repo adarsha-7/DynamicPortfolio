@@ -4,10 +4,58 @@ axios.defaults.withCredentials = true;
 const baseURL = import.meta.env.VITE_ENV === 'production' ? import.meta.env.VITE_URL : '';
 
 const callback = (res) => {
-    //load content
     res = res.data;
     
-    document.querySelector("#resume-btn").href = res.resume;
+    document.querySelector("#resume-btn").addEventListener("click", () => {
+        let existingBox = document.querySelector("#resume-box");
+        if (existingBox) {
+            existingBox.remove();
+            return;
+        }
+
+        const box = `
+            <div id="resume-box" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+                <div id="inner-box" class="bg-white dark:bg-gray-800 p-5 rounded-xl shadow-lg w-180 space-y-3 relative">
+                    <a id="open-resume" href="" target="_blank"><div class="text-md font-medium px-3 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 hover:cursor-pointer">
+                        Open Resume
+                    </div></a>
+                    <div class="text-md font-medium px-3 py-2 rounded">
+                        Edit Resume
+                    </div>
+                    <input type="text" placeholder="Resume Link" id="new-link" class="w-full px-3 py-2 rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:outline-none" />
+                    <button id="submit-button" class="h-10 w-full px-4 py-2 rounded border border-gray-300 dark:border-gray-600 bg-cards dark:bg-cards-dark hover:bg-gray-100 dark:hover:bg-gray-700 hover:cursor-pointer">
+                        Submit
+                    </button>
+                </div>
+            </div>
+        `
+    
+        document.body.insertAdjacentHTML("beforeend", box);
+
+        document.querySelector("#open-resume").href = res.resume;
+
+        document.querySelector("#submit-button").addEventListener("click", () => {
+            const newLink = document.querySelector("#new-link").value;
+            if (!(newLink)) 
+                alert("Please enter the new resume link before submitting");
+            else {
+                axios.put(`${baseURL}/api/edit/resume`, {newLink: newLink})
+                .then((res) => {
+                    document.querySelector("#open-resume").href = res.data.resume;
+                })
+                .catch(err => console.error(err));             
+            }
+            document.querySelector("#resume-box").remove();
+        })
+    
+        document.querySelector("#resume-box").addEventListener("click", (e) => {
+            if (!document.querySelector("#inner-box").contains(e.target)) {
+                document.querySelector("#resume-box").remove();
+            }
+        });
+    });
+    
+
     document.querySelector(".about-image").src = res.about.image;
     document.querySelector(".about-content").innerHTML = res.about.description;
 
