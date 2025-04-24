@@ -8,26 +8,20 @@
 
 ## Tech Stack
 ### Frontend: 
-#### - HTML
-#### - Tailwind CSS
-#### - JavaScript
+####  HTML + Tailwind CSS + JavaScript
 
 ### Backend:
-#### - Node.js 
-#### - Express.js 
-#### - MongoDB
+#### - Node.js + Express.js + MongoDB
 
 ## Additional Tools
 ### Frontend: 
-#### - Vite (development server)
-#### - Axios (API requests) 
-#### - Socket.io (Websocket)
+#### - Vite (development server), Axios (API requests)
 
 ### Backend:
-#### - JWT (authentication) 
-#### - Sendgrid (email API) 
-#### - Cloudinary (cloud API) 
-#### - Socket.io (Websocket)
+#### - JWT (authentication), Sendgrid (email API), Cloudinary (cloud API), Socket.io (Websocket)
+
+### Hosting:
+#### - Vercel (frontend) + Railway (backend)
 
 ## Motivation
 #### - This is my most abmitious solo project yet, where I learned how to use many useful tools and technologies for different purposes in full-stack development. 
