@@ -126,12 +126,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-//typing effect
 const l1 = "Web developer specializing in";
 const l2 = "front-end and back-end";
 const l3 = "for websites.";
 
-function typewriter1() {
+function typein() {
     let index = 0;
     let interval = setInterval(() => {
         if (index < l1.length) {
@@ -139,37 +138,79 @@ function typewriter1() {
             index++;
         } else {
             clearInterval(interval);
-            typewriter2();
+            type2();
         }
     }, 50);
+
+    function type2() {
+        let index = 0;
+        let interval = setInterval(() => {
+            if (index < l2.length) {
+                document.querySelector("#l2").innerHTML += l2[index];
+                index++;
+            } else {
+                clearInterval(interval);
+                type3();
+            }
+        }, 50);
+    }
+
+    function type3() {
+        let index = 0;
+        let interval = setInterval(() => {
+            if (index < l3.length) {
+                document.querySelector("#l3").innerHTML += l3[index];
+                index++;
+            } else {
+                clearInterval(interval);
+                setTimeout(typeout, 3000);
+            }
+        }, 50);
+    }
 }
 
-function typewriter2() {
-    let index = 0;
-    let interval = setInterval(() => {
-        if (index < l2.length) {
-            document.querySelector("#l2").innerHTML += l2[index];
-            index++;
-        } else {
-            clearInterval(interval);
-            typewriter3();
-        }
-    }, 50);
+function typeout() {
+    function detype3() {
+        let elem = document.querySelector("#l3");
+        let interval = setInterval(() => {
+            if (elem.innerHTML.length > 0) {
+                elem.innerHTML = elem.innerHTML.slice(0, -1);
+            } else {
+                clearInterval(interval);
+                detype2();
+            }
+        }, 50);
+    }
+
+    function detype2() {
+        let elem = document.querySelector("#l2");
+        let interval = setInterval(() => {
+            if (elem.innerHTML.length > 0) {
+                elem.innerHTML = elem.innerHTML.slice(0, -1);
+            } else {
+                clearInterval(interval);
+                detype1();
+            }
+        }, 50);
+    }
+
+    function detype1() {
+        let elem = document.querySelector("#l1");
+        let interval = setInterval(() => {
+            if (elem.innerHTML.length > 0) {
+                elem.innerHTML = elem.innerHTML.slice(0, -1);
+            } else {
+                clearInterval(interval);
+                setTimeout(typein, 500);            
+            }
+        }, 50);
+    }
+
+    detype3();
 }
 
-function typewriter3() {
-    let index = 0;
-    let interval = setInterval(() => {
-        if (index < l3.length) {
-            document.querySelector("#l3").innerHTML += l3[index];
-            index++;
-        } else {
-            clearInterval(interval);
-        }
-    }, 50);
-}
+window.onload = typein;
 
-window.onload = typewriter1();
 
 //contact
 const form = document.querySelector("#contact");
