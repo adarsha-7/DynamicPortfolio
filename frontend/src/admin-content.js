@@ -233,6 +233,7 @@ const callback = (res) => {
                     <label><input type="checkbox" value="node" /> Node.js</label>
                     <label><input type="checkbox" value="express" /> Express.js</label>
                     <label><input type="checkbox" value="mongo" /> MongoDB</label>
+                    <label><input type="checkbox" value="postgresql" /> PostgreSQL</label>
                     <label><input type="checkbox" value="jwt" /> JWT</label>
                 </div>
             </div>
@@ -296,6 +297,11 @@ const callback = (res) => {
           'input[type="checkbox"][value="mongo"]'
         ).checked
           ? `<img src="/icons/mongodb-sm.png" alt="MongoDB logo">`
+          : "";
+        backend += addForm.querySelector(
+          'input[type="checkbox"][value="postgresql"]'
+        ).checked
+          ? `<img src="/icons/postgresql.png" alt="PostgreSQL logo">`
           : "";
         backend += addForm.querySelector('input[type="checkbox"][value="jwt"]')
           .checked
