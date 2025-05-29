@@ -63,7 +63,7 @@ setInterval(refreshToken, 290 * 1000)
     document.body.innerHTML = `
       <div class="flex items-center justify-center h-screen bg-gray-100 p-6 text-center">
         <h1 class="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-800">
-          This website is only available on desktop devices.
+          Thank You for visiting but this website is designed only for desktop devices.
         </h1>
       </div>
     `;
