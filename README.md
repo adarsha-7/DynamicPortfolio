@@ -21,7 +21,7 @@
 #### - JWT (authentication), Sendgrid (email API), Cloudinary (cloud API), Socket.io (Websocket)
 
 ### Hosting:
-#### - Vercel (frontend) + Railway (backend)
+#### - Vercel (frontend) + Render (backend)
 
 ## Additional info
 #### - This is my most abmitious solo project yet, where I learned how to use many useful tools and technologies for different purposes in full-stack development. 
