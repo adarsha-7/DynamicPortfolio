@@ -24,5 +24,5 @@
 #### - Vercel (frontend) + Render (backend)
 
 ## Additional info
-#### - This is my most abmitious solo project yet, where I learned how to use many useful tools and technologies for different purposes in full-stack development. 
+#### - This was most abmitious solo project in the beginning of my web-development journey, where I learned how to use many useful tools and technologies for different purposes in full-stack development. 
 #### - The main motivation for this project was the real life usefulness and practicality of this project and how it makes managing a personal portfolio easy and clean.
