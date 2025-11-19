@@ -1,8 +1,7 @@
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
-const baseURL =
-    import.meta.env.VITE_ENV === "production" ? import.meta.env.VITE_URL : "";
+const baseURL = import.meta.env.VITE_ENV === "production" ? import.meta.env.VITE_URL : "";
 
 const homePage = document.getElementById("home-page");
 const skillsPage = document.getElementById("skills-page");
@@ -56,12 +55,6 @@ document.querySelector("#works-btn").addEventListener("click", function () {
     setTimeout(() => {
         document.querySelector("#home-button").style.pointerEvents = "auto";
     }, 1100);
-
-    setTimeout(() => {
-        alert(
-            "Content of this page might require 15-20 seconds to load due to cold start of server."
-        );
-    }, 1000);
 });
 
 document.querySelector("#about-btn").addEventListener("click", function () {
@@ -78,12 +71,6 @@ document.querySelector("#about-btn").addEventListener("click", function () {
     setTimeout(() => {
         document.querySelector("#home-button").style.pointerEvents = "auto";
     }, 1100);
-
-    setTimeout(() => {
-        alert(
-            "Content of this page might require 15-20 seconds to load due to cold start of server."
-        );
-    }, 1000);
 });
 
 document.querySelector("#contact-btn").addEventListener("click", function () {
@@ -239,8 +226,7 @@ form.addEventListener("submit", (event) => {
         .then((res) => {
             console.log(res.data);
             form.reset();
-            document.querySelector("#error-message").innerHTML =
-                "Message Sent Successfully";
+            document.querySelector("#error-message").innerHTML = "Message Sent Successfully";
         })
         .catch((err) => {
             console.error(err);
@@ -253,10 +239,8 @@ const adminBtn = document.querySelector("#admin");
 adminBtn.addEventListener("click", () => {
     if (localStorage.getItem("mode") == "visitor") {
         axios.get(`${baseURL}/api/admin`).then((res) => {
-            if (res.data.Authenticated)
-                window.location.href = "admin-page.html";
+            if (res.data.Authenticated) window.location.href = "admin-page.html";
             else window.location.href = "admin-login.html";
         });
-    } else if (localStorage.getItem("mode") == "admin")
-        window.location.href = "/";
+    } else if (localStorage.getItem("mode") == "admin") window.location.href = "/";
 });
