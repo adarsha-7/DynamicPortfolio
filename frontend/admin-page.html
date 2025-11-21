@@ -10,7 +10,7 @@
 
     <body>
         <nav>
-            <h1 id="home-button">PORTFOLIO</h1>
+            <h1 class="home-button" id="home-button">PORTFOLIO</h1>
             <div class="flex gap-3 sm:gap-5 md:gap-10 lg:gap-15 font-light flex-1/3 justify-center">
                 <a class="nav-link" id="resume-btn" target="_blank">RESUME</a>
                 <a class="nav-link" href="#" id="about-btn">ABOUT</a>
@@ -72,7 +72,12 @@
         </div>
 
         <div id="skills-page">
-            <h2 class="font-light text-3xl">SKILLS</h2>
+            <div class="flex justify-between w-full">
+                <h2 class="font-light text-3xl">SKILLS</h2>
+                <i
+                    class="fa-solid fa-arrow-right-long text-2xl hover:text-primary hover:cursor-pointer home-button skills-home-button"
+                ></i>
+            </div>
             <div class="flex flex-col gap-12">
                 <div class="flex flex-col gap-5">
                     <p class="font-light text-xl items-center">Front-end</p>
@@ -143,8 +148,11 @@
         </div>
 
         <div id="projects-page">
-            <div>
+            <div class="flex justify-between w-full">
                 <h2 class="font-light text-3xl">WORKS</h2>
+                <i
+                    class="fa-solid fa-arrow-left-long text-2xl hover:text-primary hover:cursor-pointer home-button works-home-button"
+                ></i>
             </div>
 
             <div id="work-container" class="flex gap-15 lg:gap-20 flex-wrap"></div>

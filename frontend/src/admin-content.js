@@ -223,8 +223,8 @@ const callback = (res) => {
                     <label><input type="checkbox" value="css" /> CSS</label>
                     <label><input type="checkbox" value="tailwind" /> Tailwind CSS</label>
                     <label><input type="checkbox" value="javascript" /> JavaScript</label>
-                    <label><input type="checkbox" value="typescript" /> TypeScript</label>
                     <label><input type="checkbox" value="react" /> React</label>
+                    <label><input type="checkbox" value="typescript" /> TypeScript</label>
                     <label><input type="checkbox" value="nextjs" /> Next.js</label>
 
                 </div>
@@ -264,16 +264,15 @@ const callback = (res) => {
             frontend += addForm.querySelector('input[type="checkbox"][value="javascript"]').checked
                 ? `<img src="/icons/JavaScript.png" alt="JavaScript logo">`
                 : "";
-            frontend += addForm.querySelector('input[type="checkbox"][value="typescript"]').checked
-                ? `<img src="/icons/typescript.png" alt="TypeScript logo">`
-                : "";
             frontend += addForm.querySelector('input[type="checkbox"][value="react"]').checked
                 ? `<img src="/icons/react.png" alt="React logo">`
                 : "";
-            frontend += addForm.querySelector('input[type="checkbox"][value="nextjs"]').checked
-                ? `<img src="/icons/next-gray.png" alt="Next.js logo">`
+            frontend += addForm.querySelector('input[type="checkbox"][value="typescript"]').checked
+                ? `<img src="/icons/typescript.png" alt="TypeScript logo">`
                 : "";
-
+            frontend += addForm.querySelector('input[type="checkbox"][value="nextjs"]').checked
+                ? `<img src="/icons/next.png" alt="Next.js logo">`
+                : "";
             backend += addForm.querySelector('input[type="checkbox"][value="node"]').checked
                 ? `<img src="/icons/nodejs-sm.png" alt="Node.js logo">`
                 : "";

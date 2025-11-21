@@ -9,7 +9,7 @@ const projectsPage = document.getElementById("projects-page");
 const aboutPage = document.getElementById("about-page");
 const contactPage = document.getElementById("contact-page");
 
-document.querySelector("#home-button").addEventListener("click", () => {
+const eventListener = () => {
     homePage.style.display = "flex";
     document.querySelector("#about-btn").style.pointerEvents = "auto";
     document.querySelector("#contact-btn").style.pointerEvents = "auto";
@@ -21,12 +21,14 @@ document.querySelector("#home-button").addEventListener("click", () => {
         contactPage.style.transform = "translateY(100%)";
         homePage.style.transform = "translateX(0)";
     }, 0);
-});
+};
+
+document.querySelector(".home-button").addEventListener("click", eventListener);
 
 document.querySelector("#skills-btn").addEventListener("click", function () {
     document.body.style.overflow = "hidden";
     skillsPage.style.display = "flex";
-    document.querySelector("#home-button").style.pointerEvents = "none";
+    document.querySelector(".home-button").style.pointerEvents = "none";
     document.querySelector("#about-btn").style.pointerEvents = "none";
     document.querySelector("#contact-btn").style.pointerEvents = "none";
 
@@ -36,14 +38,15 @@ document.querySelector("#skills-btn").addEventListener("click", function () {
     }, 0);
 
     setTimeout(() => {
-        document.querySelector("#home-button").style.pointerEvents = "auto";
+        document.querySelector(".home-button").style.pointerEvents = "auto";
+        document.querySelector(".skills-home-button").addEventListener("click", eventListener);
     }, 1100);
 });
 
 document.querySelector("#works-btn").addEventListener("click", function () {
     document.body.style.overflow = "hidden";
     projectsPage.style.display = "flex";
-    document.querySelector("#home-button").style.pointerEvents = "none";
+    document.querySelector(".home-button").style.pointerEvents = "none";
     document.querySelector("#about-btn").style.pointerEvents = "none";
     document.querySelector("#contact-btn").style.pointerEvents = "none";
 
@@ -53,14 +56,15 @@ document.querySelector("#works-btn").addEventListener("click", function () {
     }, 0);
 
     setTimeout(() => {
-        document.querySelector("#home-button").style.pointerEvents = "auto";
+        document.querySelector(".home-button").style.pointerEvents = "auto";
+        document.querySelector(".works-home-button").addEventListener("click", eventListener);
     }, 1100);
 });
 
 document.querySelector("#about-btn").addEventListener("click", function () {
     document.body.style.overflow = "hidden";
     aboutPage.style.display = "flex";
-    document.querySelector("#home-button").style.pointerEvents = "none";
+    document.querySelector(".home-button").style.pointerEvents = "none";
     document.querySelector("#contact-btn").style.pointerEvents = "none";
 
     setTimeout(() => {
@@ -69,14 +73,15 @@ document.querySelector("#about-btn").addEventListener("click", function () {
     }, 0);
 
     setTimeout(() => {
-        document.querySelector("#home-button").style.pointerEvents = "auto";
+        document.querySelector(".home-button").style.pointerEvents = "auto";
+        document.querySelector(".about-home-button").addEventListener("click", eventListener);
     }, 1100);
 });
 
 document.querySelector("#contact-btn").addEventListener("click", function () {
     document.body.style.overflow = "hidden";
     contactPage.style.display = "flex";
-    document.querySelector("#home-button").style.pointerEvents = "none";
+    document.querySelector(".home-button").style.pointerEvents = "none";
     document.querySelector("#about-btn").style.pointerEvents = "none";
 
     setTimeout(() => {
@@ -85,7 +90,8 @@ document.querySelector("#contact-btn").addEventListener("click", function () {
     }, 0);
 
     setTimeout(() => {
-        document.querySelector("#home-button").style.pointerEvents = "auto";
+        document.querySelector(".home-button").style.pointerEvents = "auto";
+        document.querySelector(".contact-home-button").addEventListener("click", eventListener);
     }, 1100);
 });
 
