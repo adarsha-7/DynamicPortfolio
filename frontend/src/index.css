@@ -2,24 +2,24 @@
 @import "@fortawesome/fontawesome-free/css/all.min.css";
 
 @theme {
-    --font-Inter: 'Inter';
-    --color-background: #F8F9FA;
-    --color-background-dark: #0B111B;
-    --color-navbar: #E9ECEF;
-    --color-navbar-dark: #0B111B;
+    --font-Inter: "Inter";
+    --color-background: #f8f9fa;
+    --color-background-dark: #0b111b;
+    --color-navbar: #e9ecef;
+    --color-navbar-dark: #0b111b;
     --color-primary: #f78537;
-    --color-cards: #FFFFFF;
+    --color-cards: #ffffff;
     --color-cards-dark: #1f2937;
-    --color-buttons: #F8F9FA;
-    --color-buttons-dark: #111827; 
-    --shadow-shadow:  0 4px 8px rgba(0, 0, 0, 0.1);
+    --color-buttons: #f8f9fa;
+    --color-buttons-dark: #111827;
+    --shadow-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 @font-face {
-    font-family: 'Inter';
-    src: url('/fonts/Inter/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+    font-family: "Inter";
+    src: url("/fonts/Inter/Inter-VariableFont_opsz,wght.ttf") format("truetype");
     font-weight: 100 900;
     font-style: normal;
 }
@@ -34,7 +34,7 @@
     }
     .font-outline-1 {
         -webkit-text-stroke: 1px #f78537;
-        -webkit-text-fill-color: #F8F9FA;
+        -webkit-text-fill-color: #f8f9fa;
     }
     .font-outline-1-dark {
         -webkit-text-stroke: 1px #f78537;
@@ -43,14 +43,21 @@
 }
 
 @layer components {
-    #home-page, #skills-page, #projects-page, #about-page, #contact-page {
+    #home-page,
+    #skills-page,
+    #projects-page,
+    #about-page,
+    #contact-page {
         @apply flex absolute w-full h-full overflow-auto transition-transform duration-1000 ease-in-out pb-10;
     }
     #home-page {
-        @apply flex-col md:flex-row justify-center items-center px-10; 
+        @apply flex-col md:flex-row justify-center items-center px-10;
     }
-    #skills-page, #projects-page, #about-page, #contact-page {
-       @apply flex-col justify-start items-start hidden pt-30 gap-10 pl-10 md:pl-20 pr-5 md:pr-10;
+    #skills-page,
+    #projects-page,
+    #about-page,
+    #contact-page {
+        @apply flex-col justify-start items-start hidden pt-30 gap-10 pl-10 md:pl-20 pr-5 md:pr-10;
     }
     #skills-page {
         transform: translateX(-100%);
@@ -70,38 +77,43 @@
         @apply text-sm md:text-lg font-light flex-1/3 hover:cursor-pointer hover:text-primary;
     }
     #admin {
-        @apply text-[10px] md:text-[13px] font-semibold hover:cursor-pointer hover:text-primary mt-2.5 md:mt-2;
+        @apply text-[10px] md:text-[13px] lg:text-[15px] font-semibold hover:cursor-pointer hover:text-primary mt-2.5 md:mt-2;
     }
-    .home-info{
+    .home-info {
         @apply flex flex-col justify-start gap-10 h-80 w-80 md:h-120 md:pt-30;
     }
-    .info-name{
-        @apply flex flex-col text-5xl font-medium h-36 ;
+    .info-name {
+        @apply flex flex-col text-5xl font-medium h-36;
     }
-    .info-info{
-        @apply flex flex-col text-xl font-light h-24 ;   
+    .info-info {
+        @apply flex flex-col text-xl font-light h-24;
     }
-    #im, #fn, #ln {
-        @apply h-12 ;
+    #im,
+    #fn,
+    #ln {
+        @apply h-12;
     }
-    #l1, #l2, #l3 {
-        @apply h-8 ;
+    #l1,
+    #l2,
+    #l3 {
+        @apply h-8;
     }
-    .skills-works-buttons{
+    .skills-works-buttons {
         @apply font-light text-gray-700 dark:text-gray-300 flex flex-col h-50 md:h-80 w-80 justify-center md:justify-center gap-8 px-5;
     }
-    #skills-btn, #works-btn{
+    #skills-btn,
+    #works-btn {
         @apply bg-buttons dark:bg-buttons-dark border-1 shadow-sm border-primary text-2xl h-12 rounded-3xl transition-all duration-200 
         hover:scale-110 hover:cursor-pointer hover:bg-primary hover:border-gray-600 dark:hover:text-background-dark;
     }
-    #skills-btn{
+    #skills-btn {
         @apply mr-10 md:mr-15;
     }
-    #works-btn{
+    #works-btn {
         @apply ml-10 md:ml-15;
     }
     .nav-link {
-        @apply text-[10px] font-light md:text-xs hover:cursor-pointer hover:text-primary;
+        @apply text-[10px] font-light md:text-[14px] hover:cursor-pointer hover:text-primary;
     }
     .logo {
         @apply transition-transform duration-200 hover:cursor-pointer hover:scale-110;
@@ -109,7 +121,7 @@
     .project-card {
         @apply bg-cards dark:bg-cards-dark text-gray-800 dark:text-gray-300 rounded-lg shadow-shadow p-4 w-80 h-50 flex flex-col items-center gap-5 duration-500 
         hover:scale-120 hover:cursor-pointer border-b-1 border-r-1 border-gray-300 dark:border-gray-700;
-      }
+    }
     .project-title {
         @apply text-2xl font-normal;
     }
@@ -123,7 +135,7 @@
         @apply absolute inset-0 px-3 pt-10 pb-1 flex items-center justify-center text-[13px] font-normal leading-snug
         opacity-0 transition-opacity duration-500 ease-in-out;
         pointer-events: none;
-    }    
+    }
     .project-card:hover .tech-icons {
         @apply opacity-0;
     }
