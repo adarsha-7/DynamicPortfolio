@@ -1,5 +1,5 @@
 # Dynamic Portfolio
-### This is my personal portfolio website — a dynamic platform that highlights my skills, showcases my projects, and stands out as a unique and robust creation thanks to its feature rich admin panel.
+### A portfolio website where the admin can login and add, modify or remove contents like projects, about description, picture etc. directly throught the website itself without manually modifying the code.
 
 ## Features:
 #### - The visitors can contact the admin directly through the website by sending messages. The admin is notified immediately in real time using Websocket if active and message is sent to admin panel, which the admin can view. 
